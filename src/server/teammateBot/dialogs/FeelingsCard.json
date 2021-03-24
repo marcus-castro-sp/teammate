@@ -1,0 +1,165 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.2",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "How are you feeling today?",
+            "size": "Medium",
+            "weight": "Bolder",
+            "wrap": true
+        },
+        {
+            "type": "ImageSet",
+            "imageSize": "medium",
+            "images": [
+                {
+                    "type": "Image",
+                    "url": "https://cdn4.iconfinder.com/data/icons/emoji-47/48/05-haha-256.png"
+                },
+                {
+                    "type": "Image",
+                    "url": "https://cdn4.iconfinder.com/data/icons/emoji-47/48/12-neutral-256.png"
+                },
+                {
+                    "type": "Image",
+                    "url": "https://cdn4.iconfinder.com/data/icons/emoji-47/48/23-sad-256.png"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.ShowCard",
+            "title": "Awesome",
+            "card": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "TextBlock",
+                        "text": "How would you like your steak prepared?",
+                        "size": "Medium",
+                        "wrap": true
+                    },
+                    {
+                        "type": "Input.ChoiceSet",
+                        "id": "SteakTemp",
+                        "style": "expanded",
+                        "choices": [
+                            {
+                                "title": "Rare",
+                                "value": "rare"
+                            },
+                            {
+                                "title": "Medium-Rare",
+                                "value": "medium-rare"
+                            },
+                            {
+                                "title": "Well-done",
+                                "value": "well-done"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Input.Text",
+                        "id": "SteakOther",
+                        "isMultiline": true,
+                        "placeholder": "Any other preparation requests?"
+                    }
+                ],
+                "actions": [
+                    {
+                        "type": "Action.Submit",
+                        "title": "OK",
+                        "data": {
+                            "FoodChoice": "Steak"
+                        }
+                    }
+                ],
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+            }
+        },
+        {
+            "type": "Action.ShowCard",
+            "title": "Ok",
+            "card": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "TextBlock",
+                        "text": "${hasMenu.hasMenuSection[0].hasMenuSection[0].description}",
+                        "size": "Medium",
+                        "wrap": true
+                    },
+                    {
+                        "type": "Input.ChoiceSet",
+                        "id": "ChickenAllergy",
+                        "style": "expanded",
+                        "isMultiSelect": true,
+                        "choices": [
+                            {
+                                "title": "I'm allergic to peanuts",
+                                "value": "peanut"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Input.Text",
+                        "id": "ChickenOther",
+                        "isMultiline": true,
+                        "placeholder": "Any other preparation requests?"
+                    }
+                ],
+                "actions": [
+                    {
+                        "type": "Action.Submit",
+                        "title": "OK",
+                        "data": {
+                            "FoodChoice": "Chicken"
+                        }
+                    }
+                ],
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+            }
+        },
+        {
+            "type": "Action.ShowCard",
+            "title": "Said",
+            "card": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "TextBlock",
+                        "text": "Would you like it prepared vegan?",
+                        "size": "Medium",
+                        "wrap": true
+                    },
+                    {
+                        "type": "Input.Toggle",
+                        "id": "Vegetarian",
+                        "title": "Please prepare it vegan",
+                        "valueOn": "vegan",
+                        "valueOff": "notVegan"
+                    },
+                    {
+                        "type": "Input.Text",
+                        "id": "VegOther",
+                        "isMultiline": true,
+                        "placeholder": "Any other preparation requests?"
+                    }
+                ],
+                "actions": [
+                    {
+                        "type": "Action.Submit",
+                        "title": "OK",
+                        "data": {
+                            "FoodChoice": "Vegetarian"
+                        }
+                    }
+                ],
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+            }
+        }
+    ]
+}

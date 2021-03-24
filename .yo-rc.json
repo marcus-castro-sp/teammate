@@ -1,0 +1,9 @@
+{
+  "generator-teams": {
+    "promptValues": {
+      "developer": "Microsoft"
+    },
+    "libraryName": "teammateBot",
+    "generator-version": "3.0.3"
+  }
+}
