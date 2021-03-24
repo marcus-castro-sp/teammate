@@ -12,154 +12,77 @@
         },
         {
             "type": "ImageSet",
-            "imageSize": "medium",
+            "imageSize": "Small",
+            "separator": true,
+            "spacing": "Medium",
             "images": [
                 {
                     "type": "Image",
-                    "url": "https://cdn4.iconfinder.com/data/icons/emoji-47/48/05-haha-256.png"
+                    "url": "https://cdn3.iconfinder.com/data/icons/emoji-1-4/64/_happy_smiley-512.png",
+                    "selectAction": {
+                        "type": "Action.Submit",
+                        "title": "cool link",
+                        "data": {
+                            "feelingChoice": "Happy"
+                        }
+                    }
                 },
                 {
                     "type": "Image",
-                    "url": "https://cdn4.iconfinder.com/data/icons/emoji-47/48/12-neutral-256.png"
+                    "url": "https://cdn3.iconfinder.com/data/icons/emoji-1-4/64/_tongue_emoticons_emoji-512.png",
+                    "selectAction": {
+                        "type": "Action.Submit",
+                        "title": "cool link",
+                        "data": {
+                            "feelingChoice": "Tongue"
+                        }
+                    }
                 },
                 {
                     "type": "Image",
-                    "url": "https://cdn4.iconfinder.com/data/icons/emoji-47/48/23-sad-256.png"
+                    "url": "https://cdn3.iconfinder.com/data/icons/emoji-1-4/64/_blush_shy_emoji-512.png",
+                    "selectAction": {
+                        "type": "Action.Submit",
+                        "title": "cool link",
+                        "data": {
+                            "feelingChoice": "Shy"
+                        }
+                    }
+                },
+                {
+                    "type": "Image",
+                    "url": "https://cdn3.iconfinder.com/data/icons/emoji-1-4/64/_thinking_think_emoji-512.png",
+                    "selectAction": {
+                        "type": "Action.Submit",
+                        "title": "cool link",
+                        "data": {
+                            "feelingChoice": "Thinking"
+                        }
+                    }
+                },
+                {
+                    "type": "Image",
+                    "url": "https://cdn3.iconfinder.com/data/icons/emoji-1-4/64/_sleep_sleeping_emoji-512.png",
+                    "selectAction": {
+                        "type": "Action.Submit",
+                        "title": "cool link",
+                        "data": {
+                            "feelingChoice": "Sleep"
+                        }
+                    }
+                },
+                {
+                    "type": "Image",
+                    "url": "https://cdn4.iconfinder.com/data/icons/emoji-47/48/23-sad-256.png",
+                    "selectAction": {
+                        "type": "Action.Submit",
+                        "title": "cool link",
+                        "data": {
+                            "feelingChoice": "Said"
+                        }
+                    }
                 }
             ]
-        }
-    ],
-    "actions": [
-        {
-            "type": "Action.ShowCard",
-            "title": "Awesome",
-            "card": {
-                "type": "AdaptiveCard",
-                "body": [
-                    {
-                        "type": "TextBlock",
-                        "text": "How would you like your steak prepared?",
-                        "size": "Medium",
-                        "wrap": true
-                    },
-                    {
-                        "type": "Input.ChoiceSet",
-                        "id": "SteakTemp",
-                        "style": "expanded",
-                        "choices": [
-                            {
-                                "title": "Rare",
-                                "value": "rare"
-                            },
-                            {
-                                "title": "Medium-Rare",
-                                "value": "medium-rare"
-                            },
-                            {
-                                "title": "Well-done",
-                                "value": "well-done"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "Input.Text",
-                        "id": "SteakOther",
-                        "isMultiline": true,
-                        "placeholder": "Any other preparation requests?"
-                    }
-                ],
-                "actions": [
-                    {
-                        "type": "Action.Submit",
-                        "title": "OK",
-                        "data": {
-                            "FoodChoice": "Steak"
-                        }
-                    }
-                ],
-                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
-            }
-        },
-        {
-            "type": "Action.ShowCard",
-            "title": "Ok",
-            "card": {
-                "type": "AdaptiveCard",
-                "body": [
-                    {
-                        "type": "TextBlock",
-                        "text": "${hasMenu.hasMenuSection[0].hasMenuSection[0].description}",
-                        "size": "Medium",
-                        "wrap": true
-                    },
-                    {
-                        "type": "Input.ChoiceSet",
-                        "id": "ChickenAllergy",
-                        "style": "expanded",
-                        "isMultiSelect": true,
-                        "choices": [
-                            {
-                                "title": "I'm allergic to peanuts",
-                                "value": "peanut"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "Input.Text",
-                        "id": "ChickenOther",
-                        "isMultiline": true,
-                        "placeholder": "Any other preparation requests?"
-                    }
-                ],
-                "actions": [
-                    {
-                        "type": "Action.Submit",
-                        "title": "OK",
-                        "data": {
-                            "FoodChoice": "Chicken"
-                        }
-                    }
-                ],
-                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
-            }
-        },
-        {
-            "type": "Action.ShowCard",
-            "title": "Said",
-            "card": {
-                "type": "AdaptiveCard",
-                "body": [
-                    {
-                        "type": "TextBlock",
-                        "text": "Would you like it prepared vegan?",
-                        "size": "Medium",
-                        "wrap": true
-                    },
-                    {
-                        "type": "Input.Toggle",
-                        "id": "Vegetarian",
-                        "title": "Please prepare it vegan",
-                        "valueOn": "vegan",
-                        "valueOff": "notVegan"
-                    },
-                    {
-                        "type": "Input.Text",
-                        "id": "VegOther",
-                        "isMultiline": true,
-                        "placeholder": "Any other preparation requests?"
-                    }
-                ],
-                "actions": [
-                    {
-                        "type": "Action.Submit",
-                        "title": "OK",
-                        "data": {
-                            "FoodChoice": "Vegetarian"
-                        }
-                    }
-                ],
-                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
-            }
         }
     ]
 }

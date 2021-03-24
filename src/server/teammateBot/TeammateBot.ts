@@ -6,6 +6,9 @@ import HelpDialog from "./dialogs/HelpDialog";
 import WelcomeCard from "./dialogs/WelcomeDialog";
 import FeelingsCard from "./dialogs/FeelingsCard";
 import PomodoroCard from "./dialogs/PomodoroCard";
+import WelcomeTeammateCard from "./dialogs/WelcomeTeammateCard";
+import CountdownCard from "./dialogs/CountDownCard";
+import BreakCard from "./dialogs/BreakCard";
 
 // Initialize debug logging module
 const log = debug("msteams");
@@ -77,15 +80,9 @@ export class TeammateBot extends TeamsActivityHandler {
         this.onConversationUpdate(async (context: TurnContext): Promise<void> => {
             if (context.activity.membersAdded && context.activity.membersAdded.length !== 0) {
                 for (const idx in context.activity.membersAdded) {
-                    if (context.activity.membersAdded[idx].id === context.activity.recipient.id) {
-                        
-                        const feelingsCard = CardFactory.adaptiveCard(FeelingsCard);
-                        await context.sendActivity({ attachments: [feelingsCard] });
-                        
-                        /*
-                        const welcomeCard = CardFactory.adaptiveCard(WelcomeCard);
+                    if (context.activity.membersAdded[idx].id === context.activity.recipient.id) {                        
+                        const welcomeCard = CardFactory.adaptiveCard(WelcomeTeammateCard);
                         await context.sendActivity({ attachments: [welcomeCard] });
-                        */
                     }
                 }
             }

@@ -1,0 +1,26 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.2",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Let’s focus for 25 minutes. Counting down!",
+            "size": "Medium",
+            "weight": "Bolder",
+            "wrap": true
+        },
+        {
+            "type": "ImageSet",
+            "imageSize": "Large",
+            "separator": true,
+            "spacing": "Medium",
+            "images": [
+                {
+                    "type": "Image",
+                    "url": "https://i.ibb.co/52yvCJm/teammate-timer-gif.png"
+                }
+            ]
+        }
+    ]
+}
