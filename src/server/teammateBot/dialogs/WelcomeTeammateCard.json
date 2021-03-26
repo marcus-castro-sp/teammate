@@ -5,10 +5,12 @@
             "type": "TextBlock",
             "size": "Medium",
             "weight": "Bolder",
-            "text": "Hi there! I'm teammate, welcome!"
+            "text": "Hi there! I'm TeamMate, welcome!"
         },
         {
             "type": "ColumnSet",
+            "separator": true,
+            "spacing": "Medium",
             "columns": [
                 {
                     "type": "Column",
@@ -35,14 +37,14 @@
             "type": "Action.Submit",
             "title": "Work",
             "data": {
-                "choice": "Work"
+                "welcomeChoice": "work"
             }
         },
         {
             "type": "Action.Submit",
             "title": "Study",
             "data": {
-                "choice": "Study"
+                "welcomeChoice": "study"
             }
         }
     ],

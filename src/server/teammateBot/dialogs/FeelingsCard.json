@@ -23,7 +23,7 @@
                         "type": "Action.Submit",
                         "title": "cool link",
                         "data": {
-                            "feelingChoice": "Happy"
+                            "feelingChoice": "happy"
                         }
                     }
                 },
@@ -34,7 +34,7 @@
                         "type": "Action.Submit",
                         "title": "cool link",
                         "data": {
-                            "feelingChoice": "Tongue"
+                            "feelingChoice": "tongue"
                         }
                     }
                 },
@@ -45,7 +45,7 @@
                         "type": "Action.Submit",
                         "title": "cool link",
                         "data": {
-                            "feelingChoice": "Shy"
+                            "feelingChoice": "shy"
                         }
                     }
                 },
@@ -56,7 +56,7 @@
                         "type": "Action.Submit",
                         "title": "cool link",
                         "data": {
-                            "feelingChoice": "Thinking"
+                            "feelingChoice": "thinking"
                         }
                     }
                 },
@@ -67,7 +67,7 @@
                         "type": "Action.Submit",
                         "title": "cool link",
                         "data": {
-                            "feelingChoice": "Sleep"
+                            "feelingChoice": "sleep"
                         }
                     }
                 },
@@ -78,7 +78,7 @@
                         "type": "Action.Submit",
                         "title": "cool link",
                         "data": {
-                            "feelingChoice": "Said"
+                            "feelingChoice": "said"
                         }
                     }
                 }

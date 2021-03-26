@@ -1,7 +1,8 @@
 import { BotDeclaration, PreventIframe } from "express-msteams-host";
 import * as debug from "debug";
 import { DialogSet, DialogState } from "botbuilder-dialogs";
-import { StatePropertyAccessor, CardFactory, TurnContext, MemoryStorage, ConversationState, ActivityTypes, TeamsActivityHandler } from "botbuilder";
+import { StatePropertyAccessor, CardFactory, TurnContext,  MessageFactory,
+    MemoryStorage, ConversationState, ActivityTypes, TeamsActivityHandler } from "botbuilder";
 import HelpDialog from "./dialogs/HelpDialog";
 import WelcomeCard from "./dialogs/WelcomeDialog";
 import FeelingsCard from "./dialogs/FeelingsCard";
@@ -46,27 +47,91 @@ export class TeammateBot extends TeamsActivityHandler {
             switch (context.activity.type) {
                 case ActivityTypes.Message:
                     {
-                        let text = TurnContext.removeRecipientMention(context.activity);
-                        text = text.toLowerCase();
-                        if (text.startsWith("hello")) {
-                            await context.sendActivity("Oh, hello to you as well!");
+                        // if a value property exists = adaptive card submit action
+                        if (context.activity.value) {
+                            console.log(context.activity.value);
+                            
 
-                            const feelingsCard = CardFactory.adaptiveCard(FeelingsCard);
-                            await context.sendActivity({ attachments: [feelingsCard] });
-                            return;
-                        } else if (text.startsWith("help")) {
-                            const welcomeCard = CardFactory.adaptiveCard(WelcomeCard);
-                            await context.sendActivity({ attachments: [welcomeCard] });
-                        } else if (text.indexOf("pomodoro") !== -1) {
+                            switch (context.activity.value.welcomeChoice) {
+                                case "study":
+                                    await context.sendActivity("School stuff, got it! I can help you with that!");
+                                  break;
+                                case "work":
+                                    await context.sendActivity("Busy at work right? Got it! I can help you with that!");
+                                  break;
+                            }
 
-                            const pomodoroCard = CardFactory.adaptiveCard(PomodoroCard);
-                            await context.sendActivity({ attachments: [pomodoroCard] });
-                        } else if (text.indexOf("feeling") !== -1) {
-                            const feelingsCard = CardFactory.adaptiveCard(FeelingsCard);
-                            await context.sendActivity({ attachments: [feelingsCard] });
-                        }
-                        else {
-                            await context.sendActivity("I'm terribly sorry, but my developer hasn't trained me to do anything yet...");
+                            switch (context.activity.value.feelingChoice) {
+                                case "happy":
+                                    await context.sendActivity("Great! 3 days in a row. Keep going.");
+                                break;
+                                case "tongue":
+                                    await context.sendActivity("Tongue!");
+                                break;
+                                case "shy":
+                                    await context.sendActivity("Shy!");
+                                break;
+                                case "thinking":
+                                    await context.sendActivity("Thinking!");
+                                break;
+                                case "sleep":
+                                    await context.sendActivity("Yeah, sometimes I get tired too. Would you like to do an exercise to shake it up?");
+                                break;
+                                case "said":
+                                    await context.sendActivity("I'm here for you. Would you like to hear a joke?");
+                                break;
+                            }
+
+                            if(context.activity.value.startPomodoro){
+                                await context.sendActivity("Let's do it! I will notify you when the 25 minutes is up.");
+                            }
+
+                        }else{
+
+                            let text = TurnContext.removeRecipientMention(context.activity);
+                            text = text.toLowerCase();
+
+                            if (text.startsWith("hello")) {
+                                await context.sendActivity("Oh, hello to you as well!");
+    
+                                const feelingsCard = CardFactory.adaptiveCard(FeelingsCard);
+                                await context.sendActivity({ attachments: [feelingsCard] });
+                                return;
+                            } else if (text.startsWith("help")) {
+                                const welcomeCard = CardFactory.adaptiveCard(WelcomeCard);
+                                await context.sendActivity({ attachments: [welcomeCard] });
+                            }else if (text.startsWith("add task")) {
+                                await context.sendActivity("Send Add Task form!");
+                            }
+                            else if (text.startsWith("add meeting")) {
+                                await context.sendActivity("Send add Meeting form!");
+                            } 
+                            else if (text.startsWith("my meeting")) {
+                                await context.sendActivity("Send next meetings for the day.");
+                            }else if (text.indexOf("pomodoro") !== -1) {
+    
+                                const pomodoroCard = CardFactory.adaptiveCard(PomodoroCard);
+                                await context.sendActivity({ attachments: [pomodoroCard] });
+                            } else if (text.indexOf("feeling") !== -1) {
+                                const feelingsCard = CardFactory.adaptiveCard(FeelingsCard);
+                                await context.sendActivity({ attachments: [feelingsCard] });
+                            }else if (text.indexOf("school stuff") !== -1 || text.indexOf("skool stuff") !== -1 ) {
+                                await context.sendActivity("School stuff, got it! I can help you with that!");
+                            }else if (text.indexOf("work stuff") !== -1 || text.indexOf("work stuff") !== -1 ) {
+                                await context.sendActivity("Busy at work right? Got it! I can help you with that!");
+                            }
+                            else if (text.indexOf("hero") !== -1) {
+                                const card = CardFactory.heroCard(
+                                    'White T-Shirt',
+                                    ['https://example.com/whiteShirt.jpg'],
+                                    ['buy','sell']
+                               );
+                               const message = MessageFactory.attachment(card);
+                               await context.sendActivity(message);
+                            }
+                            else {
+                                await context.sendActivity("I'm terribly sorry, but my developer hasn't trained me to do anything yet...");
+                            }
                         }
                     }
                     break;

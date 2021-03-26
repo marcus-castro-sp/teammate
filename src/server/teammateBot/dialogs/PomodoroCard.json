@@ -9,7 +9,7 @@
         },
         {
             "type": "TextBlock",
-            "text": "Description...",
+            "text": "I will setup a timer for you so you can focus.",
             "wrap": true
         }
     ],
@@ -29,7 +29,10 @@
                 "actions": [
                     {
                         "type": "Action.Submit",
-                        "title": "Start"
+                        "title": "Start",
+                        "data": {
+                            "startPomodoro": true
+                        }
                     }
                 ],
                 "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
